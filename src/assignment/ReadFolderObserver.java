@@ -11,8 +11,7 @@ import java.io.IOException;
  *
  * @author Lenovo
  */
-public interface ReadFolderObserver {
+public interface ReadFolderObserver  {
     
-    void listen() throws IOException;
-    
+    void listen() throws IOException;    
 }

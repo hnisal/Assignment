@@ -16,10 +16,13 @@ public class Mp4ToMp3 implements MediaConverter {
         File ConvertedFile = new File("C:\\samples\\VideoConverted.mp3");
         
         //Set Attributes for video converstion
-        AudioAttributes video=new AudioAttributes();
+        AudioAttributes audio=new AudioAttributes();
         EncodingAttributes attr=new EncodingAttributes();
         attr.setFormat("mp3");
-        attr.setAudioAttributes(video);
+        attr.setAudioAttributes(audio);
+        
+        String name = file.getName();
+        System.out.println("File name: "+name);
         
         // Do the converting 
         Encoder encode=new Encoder();

@@ -25,12 +25,19 @@ public class ReadMp4ToMp3 implements ReadFolderObserver {
     @Override
     public void listen() throws IOException {
         
+        Mp4ToMp3 convertToMp3 = new Mp4ToMp3();
         try (Stream<Path> paths = Files.walk(Paths.get("c://samples//Mp4ToMp3"))) {
-                List<String> mp4ToMp3List = paths.filter(Files::isRegularFile)
+                List<File> mp4ToMp3List = paths.filter(Files::isRegularFile)
                          .map(p -> p.getFileName()
-                                    .toString())
+                                    .toFile())
                          .collect(Collectors.toList());
-                //mp4ToMp3List.forEach(System.out::println);
+                for (File file: mp4ToMp3List){
+                    
+                    String name = file.getName();
+                    System.out.println("File name: "+name);   
+                    
+                    convertToMp3.Convert(file);
+                }
 
                 } catch (IOException e) {
                      e.printStackTrace();
